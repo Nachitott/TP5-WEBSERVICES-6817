@@ -1,0 +1,60 @@
+# Dependencias pesadas (¡El mayor consumidor de tokens!)
+node_modules/
+.npm/
+.yarn/
+
+# Carpetas de compilación y producción (Angular build)
+dist/
+.angular/
+.next/
+build/
+out/
+
+# Entornos y credenciales locales (Por seguridad y ahorro de espacio)
+.env
+.env.*
+!.env.example
+src/environments/environment.prod.ts
+src/environments/environment.development.ts
+
+# Archivos del sistema operativo e IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+.DS_Store
+Thumbs.db
+
+# Formatos de empaquetado y archivos comprimidos
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Logs y reportes de rendimiento
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+coverage/
+.nyc_output/
+
+# Archivos de diseño pesados o imágenes (No contienen lógica de código)
+src/assets/images/
+src/assets/fonts/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.pdf
+
+# Archivos de configuración de paquetes (Opcional, pero ahorra tokens si no vas a modificar dependencias)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

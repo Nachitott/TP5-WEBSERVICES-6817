@@ -1,0 +1,10 @@
+{
+    "/api-peliculas": {
+        "target": "https://imdb-top-100-movies.p.rapidapi.com",
+        "secure": true,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api-peliculas": ""
+        }
+    }
+}

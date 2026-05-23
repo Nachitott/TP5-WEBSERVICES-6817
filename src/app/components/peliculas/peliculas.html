@@ -1,0 +1,47 @@
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-black">LISTA DE PELÍCULAS RECOMENDADAS</h2>
+        <span class="cursor-pointer">EXPLORAR ESTRENOS</span>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        @for (p of listaPeliculas; track p.rank) {
+        <div class="col">
+            <div class="card h-100 bg-dark text-white border-secondary">
+
+                <img [src]="p.image" class="card-img-top object-fit-cover" style="height: 12rem;" [alt]="p.title">
+
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase fw-bold">
+                        {{ p.title }} <small class="text-secondary">({{ p.year }})</small>
+                    </h5>
+
+                    <p class="card-text" style="font-size: 0.9rem;">
+                        <strong>Desc:</strong> {{ p.description }}
+                    </p>
+                </div>
+
+                <div class="card-footer border-top-0 bg-transparent pb-3">
+                    <small class="d-block mb-2">Gén:</small>
+
+                    @for (g of p.genre; track g) {
+                    <span class="badge bg-primary me-1 mb-1">
+                        {{ g }}
+                    </span>
+                    }
+                </div>
+
+            </div>
+        </div>
+        } @empty {
+        <div class="col-12 text-center my-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando películas...</span>
+            </div>
+            <p class="text-muted mt-2">Buscando el listado en la API...</p>
+        </div>
+        }
+
+    </div>
+</div>
