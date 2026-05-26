@@ -1,0 +1,58 @@
+<div class="container d-flex justify-content-center align-items-center py-5">
+    <div class="card shadow-lg border-0" style="width: 24rem; background-color: #1a446c;">
+
+        <div class="card-header text-center text-white py-3 border-0" style="background-color: #123352;">
+            <h5 class="mb-0 fw-bold tracking-wide text-uppercase">Conversor De Divisas</h5>
+        </div>
+
+        <div class="card-body text-white p-4">
+
+            <div class="mb-3">
+                <label class="form-label small fw-bold text-light opacity-75">Cantidad</label>
+                <input type="number" class="form-control text-center fw-bold bg-white text-dark py-2" placeholder="0.00"
+                    min="1" [(ngModel)]="cantidad">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label small fw-bold text-light opacity-75">De</label>
+                <select class="form-select bg-white text-dark py-2" [(ngModel)]="monedaOrigen">
+                    @for (moneda of listaMonedas; track moneda.codigo) {
+                    <option [value]="moneda.codigo">{{ moneda.nombre }}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label small fw-bold text-light opacity-75">A</label>
+                <select class="form-select bg-white text-dark py-2" [(ngModel)]="monedaDestino">
+                    @for (moneda of listaMonedas; track moneda.codigo) {
+                    <option [value]="moneda.codigo">{{ moneda.nombre }}</option>
+                    }
+                </select>
+            </div>
+
+            @if (resultadoFinal !== null) {
+            <div class="alert alert-light text-center border-0 p-3 mb-4 animate__animated animate__fadeIn">
+                <div class="text-muted small fw-bold text-uppercase">{{ cantidad }} {{ monedaOrigen }} equivalen a:
+                </div>
+                <div class="fs-3 fw-black text-primary mt-1">{{ resultadoFinal | number:'1.2-2' }} {{ monedaDestino }}
+                </div>
+            </div>
+            }
+
+            <button
+                class="btn w-100 fw-bold btn-warning py-2 text-uppercase text-dark d-flex justify-content-center align-items-center gap-2"
+                [disabled]="cargando || cantidad <= 0" (click)="ejecutarConversion()">
+
+                @if (cargando) {
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span>Procesando...</span>
+                } @else {
+                <span>Convertir</span>
+                <i class="bi bi-arrow-right-short fs-5"></i>
+                }
+            </button>
+
+        </div>
+    </div>
+</div>

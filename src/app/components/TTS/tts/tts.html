@@ -1,0 +1,44 @@
+<div class="container py-5 d-flex justify-content-center">
+    <div class="card bg-dark text-white shadow-lg p-4" style="width: 100%; max-width: 500px;">
+
+        <h3 class="text-center text-warning fw-bold mb-4 text-uppercase">Convertidor de Texto a Voz</h3>
+
+        <div class="mb-3">
+            <label class="form-label small fw-bold opacity-75">Texto a convertir</label>
+            <textarea id="textoInput" name="textoInput" class="form-control bg-secondary text-white border-0" rows="4"
+                placeholder="Escribe el texto que deseas escuchar aquí..." [(ngModel)]="textoUsuario">
+            </textarea>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label small fw-bold opacity-75">Seleccionar Idioma</label>
+            <select id="idiomaSelect" name="idiomaSelect" class="form-select bg-secondary text-white border-0"
+                [(ngModel)]="idiomaSeleccionado">
+                <option value="es">Español</option>
+                <option value="en">Inglés</option>
+                <option value="fr">Francés</option>
+            </select>
+        </div>
+
+        @if (audioUrl) {
+        <div class="mb-4 text-center p-3 rounded bg-secondary animate__animated animate__fadeIn">
+            <label class="form-label d-block small fw-bold text-warning mb-2">
+                <i class="bi bi-check-circle-fill me-2"></i>¡Audio Listo!
+            </label>
+            <audio [src]="audioUrl" controls class="w-100"></audio>
+        </div>
+        }
+
+        <button class="btn btn-warning w-100 fw-bold text-uppercase py-2" [disabled]="cargando || !textoUsuario.trim()"
+            (click)="procesarTexto()">
+
+            @if (cargando) {
+            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+            <span>Procesando Audio...</span>
+            } @else {
+            <span>Generar Audio</span>
+            }
+        </button>
+
+    </div>
+</div>

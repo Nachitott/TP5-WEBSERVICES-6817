@@ -6,5 +6,29 @@
         "pathRewrite": {
             "^/api-peliculas": ""
         }
+    },
+    "/api-marcas": {
+        "target": "https://car-specs.p.rapidapi.com",
+        "secure": true,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api-marcas": ""
+        }
+    },
+    "/api-divisas": {
+        "target": "https://api.fxratesapi.com",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api-divisas": ""
+        }
+    },
+    "/api-tts": {
+        "target": "https://open-ai-text-to-speech1.p.rapidapi.com",
+        "secure": true,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api-tts": ""
+        }
     }
 }

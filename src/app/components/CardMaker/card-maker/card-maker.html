@@ -1,0 +1,41 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @for (marca of listaMarcas; track marca.id) {
+    <div class="col">
+        <div class="card h-100 bg-dark text-white border-secondary">
+            <div class="card-body text-center">
+                <h5 class="card-title text-uppercase fw-bold">{{ marca.name }}</h5>
+
+                <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#modalModelos"
+                    (click)="obtenerModelosPorMarca(marca.id)">
+                    Ver Modelos
+                </button>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+<div class="modal fade" id="modalModelos" tabindex="-1" aria-labelledby="modalModelosLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered text-dark">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="modalModelosLabel">Modelos Disponibles</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group list-group-flush">
+                    @for (modelo of listaModelos; track modelo.id) {
+                    <li class="list-group-item">
+                        <i class="bi bi-car-front-fill me-2 text-primary"></i> {{ modelo.name }}
+                    </li>
+                    } @empty {
+                    <div class="text-center py-3">
+                        <div class="spinner-border text-primary" role="status"></div>
+                        <p class="mt-2 mb-0 text-muted">Buscando modelos en la API...</p>
+                    </div>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

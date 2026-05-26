@@ -5,7 +5,7 @@ import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-peliculas',
   standalone: true,
-  imports: [], // Mantén esto limpio como lo dejamos con el @for nativo
+  imports: [],
   templateUrl: './peliculas.html',
   styleUrls: ['./peliculas.css']
 })
